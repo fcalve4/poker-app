@@ -13,8 +13,12 @@ def root():
     table.add_player("Fredo")
     table.add_player("Michael")
 
+    print("DEBUGGING - PRINTING PLAYERs -> ", str(table.get_players()))
+
     # Create a PokerGame instance with the table of players
     game = PokerGame(table)
 
+
     # Play a hand of poker with the number of players dealt in
-    return str(game.play_hand(len(table.get_players())))
+    game.game_loop()
+
