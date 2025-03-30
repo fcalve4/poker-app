@@ -1,13 +1,8 @@
 from fastapi import APIRouter
-from app.game.game import run_poker_round
-
+from app.game.game import PokerGame
 router = APIRouter()
 
 @router.get("/")
 def root():
-    return {"message": "Poker backend is live 🎲"}
-
-@router.post("/play")
-def play():
-    result = run_poker_round()
-    return {"result": result}
+    game = PokerGame()
+    return {str(game.deal_initial_hand())}
