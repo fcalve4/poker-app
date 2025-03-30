@@ -13,5 +13,12 @@ class Player:
         """
         print(f"{self.name} performs action: {action}")
 
+    def get_hand(self):
+        """
+        Get the player's hand.
+        :return: The player's hand (list of card objects).
+        """
+        return self.hand
+
     def __repr__(self):
         return f"{self.name}: {self.hand}"
