@@ -24,13 +24,11 @@ class Evaluator():
         best_player = None
         best_hand = None
         
-        # For now, just return the first player as the winner for demonstration purposes
         for player in players:
             hand = player.get_hand()
             print(f"Evaluating {player}'s hand: {hand}")
             best_player = player
             best_hand = hand
-            break # For now break and return fist player
         
         return best_player, best_hand
     

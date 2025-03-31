@@ -1,3 +1,5 @@
+import sys, io
+
 from fastapi import APIRouter
 from app.game.game import PokerGame
 from app.game.table import PokerTable
@@ -18,7 +20,21 @@ def root():
     # Create a PokerGame instance with the table of players
     game = PokerGame(table)
 
+    # Redirect stdout to capture print statements
+    captured_output = io.StringIO()
+    sys.stdout = captured_output
 
     # Play a hand of poker with the number of players dealt in
     game.game_loop()
+
+    # Reset redirect.
+    sys.stdout = sys.__stdout__
+
+    # Return the captured output for debugging purposes
+    # This will return the output of the game loop to the API response
+    return {
+        "message": "Poker game simulation completed.",
+        "output": captured_output.getvalue()
+    }
+    
 

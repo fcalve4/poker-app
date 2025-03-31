@@ -78,7 +78,7 @@ class PokerGame():
 
     def play_hand(self):
         # Perform initial deal
-        self.deal_initial_hand
+        self.deal_initial_hand()
         # Play the preflop betting round
         self.play_preflop_betting_round()
         print("-------------- DEALING FLOP ------------------")
@@ -104,9 +104,7 @@ class PokerGame():
         self.play_standard_betting_round()
 
         # Evaluate the final hands and determine the winner
-        players = self.table.get_players()
-        self.hand_evaluator.evaluate(players)
-
+        self.hand_evaluator.evaluate(self.table.get_players(), self.community_cards)
 
 
     def game_loop(self):
